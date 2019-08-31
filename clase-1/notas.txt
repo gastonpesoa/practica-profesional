@@ -1,0 +1,15 @@
+todo movile
+1er parcial -> al menos 5 apps -> todas con login
+
+2do parcial (grupos de 3) -> trabajos mas grandes
+
+app corriendo en el dispositivo
+dos paginas
+
+la primera login
+dos inputs, dos btns
+btn login puede no hacer nada o 
+guarda la info en el localstorage y podria mostrarlo en la segnda paginas o
+verificar con firebase
+
+la segunda texto simple
