@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"name": "relevamiento-visual",
+			"path": "relevamiento-visual"
+		},
+		{
+			"name": "didactica-idiomas",
+			"path": "didactica-idiomas"
+		},
+		{
+			"name": "alarma",
+			"path": "alarma"
+		},
+		{
+			"name": "metegol",
+			"path": "metegol"
+		},
+		{
+			"name": "chat-tutorial",
+			"path": "chat-tutorial"
+		}
+	],
+	"settings": {}
+}

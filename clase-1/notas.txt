@@ -13,3 +13,11 @@ guarda la info en el localstorage y podria mostrarlo en la segnda paginas o
 verificar con firebase
 
 la segunda texto simple
+
+5 apps (todos con firebase):
+- 5 logins distintos (fuentes, colores, botones, etc...)
+- 5 iconos distintos*
+- 5 splash distintos* -> tiene q tener apellido nombre y division
+
+*creada por la misma empresa (distintos pero iguales)
+

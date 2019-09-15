@@ -1,0 +1,7 @@
+{
+  "name": "didactica-idiomas",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

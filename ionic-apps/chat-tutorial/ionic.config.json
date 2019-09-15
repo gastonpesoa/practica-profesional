@@ -1,0 +1,8 @@
+{
+  "name": "chat-tutorial",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,19 @@
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+ion-button{
+    height: 80px;
+    margin: 30px;
+    float: right;
+}
+
+ion-content{
+    --ion-background-color:rgb(90, 45, 104);
+  }
+
+  ion-item  {
+    --background: rgb(198, 182, 11);
+    color: white;
+    margin: 25px;
+}
