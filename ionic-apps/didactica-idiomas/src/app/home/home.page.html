@@ -1,15 +1,61 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
+    <ion-button slot="end" fill="clear" (click)="logOut()">
+      <ion-icon style="color: aliceblue" name="log-out"></ion-icon>
+    </ion-button>
     <ion-title>
-      Ionic Blank
+      Tabla didáctica de idiomas para niños
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-list class="ion-padding">
+    <ion-item lines="none" *ngFor="let item of list" (click)="reproducir(item)">
+      <!-- 1290*630 -->
+      <img class="item-img" [src]="item.imagen" alt="">
+    </ion-item>
+  </ion-list>
+
+
   <div class="ion-padding">
-    The world is your oyster.  okojoij
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+    <ion-fab id="f-boton-idioma" horizontal="end" vertical="top" slot="fixed" edge>
+      <ion-fab-button color="secondary">
+        <img *ngIf="idioma==0" src="../../assets/banderas/esp.svg" alt="">
+        <img *ngIf="idioma==1" src="../../assets/banderas/gbr.svg" alt="">
+        <img *ngIf="idioma==2" src="../../assets/banderas/prt.svg" alt="">
+      </ion-fab-button>
+      <ion-fab-list>
+        <ion-fab-button color="light" (click)="cambiarIdioma(0)">
+          <img class="img-tipo" src="../../assets/banderas/esp.svg" alt="">
+        </ion-fab-button>
+        <ion-fab-button color="light" (click)="cambiarIdioma(1)">
+          <img class="img-tipo" src="../../assets/banderas/gbr.svg" alt="">
+        </ion-fab-button>
+        <ion-fab-button color="light" (click)="cambiarIdioma(2)">
+          <img class="img-tipo" src="../../assets/banderas/prt.svg" alt="">
+        </ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
+
+    <ion-fab id="f-boton-idioma" horizontal="start" vertical="top" slot="fixed" edge>
+      <!-- <ion-fab horizontal="start" vertical="bottom" slot="fixed"> -->
+        <ion-fab-button color="secondary">
+          <img id="img-temas" src="../../assets/temas.svg" alt="">
+        </ion-fab-button>
+        <ion-fab-list>
+          <ion-fab-button color="light" (click)="cambiarTipo(0)">
+            <img class="img-tipo" src="../../assets/colores/colores.jpeg" alt="">
+          </ion-fab-button>
+          <ion-fab-button color="light" (click)="cambiarTipo(1)">
+            <img class="img-tipo" src="../../assets/animales/animales.jpeg" alt="">
+          </ion-fab-button>
+          <ion-fab-button color="light" (click)="cambiarTipo(2)">
+            <img class="img-tipo" src="../../assets/numeros/numeros.jpg" alt="">
+          </ion-fab-button>
+        </ion-fab-list>
+      <!-- </ion-fab> -->
+    </ion-fab>
   </div>
-  <ion-button (click)="OnLogOut()">Desconectarse</ion-button>
 </ion-content>
