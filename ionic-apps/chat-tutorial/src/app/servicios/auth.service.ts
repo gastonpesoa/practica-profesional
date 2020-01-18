@@ -51,4 +51,8 @@ export class AuthService {
         .catch(error => { reject(error) });
     });
   }
+
+  getCurrentUserMail(): string {
+    return this.AFauth.auth.currentUser.email;
+  }
 }

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="tertiary">
+  <ion-toolbar [color]="chat.color">
     <ion-button slot="start" fill="clear" (click)="closeModal()">
       <ion-icon style="color: aliceblue; font-size: 25px;" name="arrow-round-back"></ion-icon>
     </ion-button>
@@ -8,7 +8,11 @@
 </ion-header>
 <ion-content padding>
   <div *ngIf="room">
-    <ion-card *ngFor="let mensaje of room.mensajes">
+    <ion-card *ngFor="let mensaje of room.mensajes" [class]="mensaje.userMail!=userMail ? 'left-align' : 'right-align'" >
+      <ion-card-header>
+        <ion-card-title [color]="chat.color" *ngIf="mensaje.userMail!=userMail">{{mensaje.userMail}}</ion-card-title>
+        <ion-card-subtitle>{{mensaje.date.toDate() | date: 'dd/MM/yy hh:mm'}}</ion-card-subtitle>
+      </ion-card-header>
       <ion-card-content>
         {{mensaje.content}}
       </ion-card-content>
@@ -18,7 +22,7 @@
 
 <ion-footer padding>
   <ion-item>
-    <ion-textarea [(ngModel)]="msg"></ion-textarea>
+    <ion-textarea maxlength="21" [(ngModel)]="msg"></ion-textarea>
     <ion-button color="success" (click)="sendMensaje()">
       <ion-icon slot="end" name="send"></ion-icon>
     </ion-button>

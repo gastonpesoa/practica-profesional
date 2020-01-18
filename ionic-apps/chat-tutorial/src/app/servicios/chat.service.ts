@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators'
 import { mensaje } from '../modelos/mensaje';
 import { firestore } from 'firebase';
+import { AuthService } from './auth.service';
 
 
 export interface chat {
@@ -17,7 +18,7 @@ export interface chat {
 })
 export class ChatService {
 
-  constructor(private db: AngularFirestore) { }
+  constructor(private db: AngularFirestore, private authServ: AuthService) { }
 
   getChatRooms() {
     return this.db.collection("chatRoom").snapshotChanges().pipe(map(rooms => {
@@ -34,6 +35,7 @@ export class ChatService {
   }
 
   sendMensajeAFirebase(mensaje: mensaje, chat_id: string) {
+    mensaje.userMail = this.authServ.getCurrentUserMail();
     this.db.collection("chatRoom").doc(chat_id).update({
       mensajes: firestore.FieldValue.arrayUnion(mensaje),
     })

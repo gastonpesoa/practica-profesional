@@ -3,6 +3,7 @@ import { NavParams, ModalController } from '@ionic/angular';
 
 import { mensaje } from '../../modelos/mensaje';
 import { ChatService } from '../../servicios/chat.service';
+import { AuthService } from 'src/app/servicios/auth.service';
 
 @Component({
   selector: 'app-chat',
@@ -17,7 +18,10 @@ export class ChatComponent implements OnInit {
   public room: any;
   public msg: string;
 
+  public userMail: string;
+
   constructor(
+    private authService: AuthService,
     private navParams: NavParams,
     private modal: ModalController,
     private chatService: ChatService) { }
@@ -28,6 +32,11 @@ export class ChatComponent implements OnInit {
       this.room = room;
     })
     this.chat = this.navParams.get('chat');
+    this.getCurrentUser();
+  }
+
+  getCurrentUser(){
+    this.userMail = this.authService.getCurrentUserMail();
   }
 
   closeModal() {
@@ -38,7 +47,8 @@ export class ChatComponent implements OnInit {
     const mensaje: mensaje = {
       content: this.msg,
       tipo: "text",
-      date: new Date()
+      date: new Date(), 
+      userMail: ""
     };
     this.chatService.sendMensajeAFirebase(mensaje, this.chat.id);
     this.msg = "";

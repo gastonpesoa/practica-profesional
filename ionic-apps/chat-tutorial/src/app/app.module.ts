@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { AngularFireModule } from '@angular/fire'
 import { AngularFireAuthModule } from '@angular/fire/auth'
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFirestoreModule } from '@angular/fire/firestore'
 import { FormsModule} from '@angular/forms'
 
@@ -22,7 +23,7 @@ import { ChatComponent } from './componentes/chat/chat.component';
   imports: [
     FormsModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule, AngularFirestoreModule
+    AngularFireAuthModule, AngularFireStorageModule, AngularFirestoreModule
   ],
   providers: [
     StatusBar,

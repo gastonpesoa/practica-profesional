@@ -1,5 +1,6 @@
 export interface mensaje {
     content: string;
     tipo: string;
-    date: Date
+    date: Date;
+    userMail: string;
 }
