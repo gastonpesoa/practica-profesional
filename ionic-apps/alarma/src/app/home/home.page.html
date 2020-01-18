@@ -1,14 +1,24 @@
 <ion-header>
   <ion-toolbar>
+    <ion-button slot="end" fill="clear" (click)="logOut()">
+      <ion-icon style="color: aliceblue" name="log-out"></ion-icon>
+    </ion-button>
     <ion-title>
-      Ionic Blank
+      Alarma de robo
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+  <div [style.background-color]="background" id="fondo">
+    <div id="info-text" [style.color]="activado?'#fff':'#000'" class="ion-padding">
+      Presione el botón para activar o desactivar el detector de robo
+    </div>
+    <div [style.animation-name]="activado?'example':''" class="btn-alarm" (click)="activar()">
+      <img src="../../assets/icon/alarm-by.png" alt="">
+    </div>
+    <div class="ion-text-center" *ngIf="activado" id="alarm-activada">
+      <span><b>¡ALARMA ACTIVADA!</b></span>
+    </div>
   </div>
 </ion-content>
