@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-button slot="end" fill="clear" (click)="presentActionSheet()">
+      <ion-icon style="color: aliceblue" name="menu"></ion-icon>
+    </ion-button>
+    <ion-title>Galería</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section class="ion-padding">
+    <ion-button [color]="todas?'warning':'light'" (click)="traer(0)">Todas</ion-button>
+    <ion-button [color]="lindas?'success':'light'" (click)="traer(1)">Lindas</ion-button>
+    <ion-button [color]="feas?'danger':'light'" (click)="traer(2)">Feas</ion-button>
+  </section>
+
+  <ion-slides id="slide-cards" pager="false" [options]="slideOpts" #slides (ionSlideDidChange)="cambiaSlide($event)">
+
+    <ion-slide *ngFor="let file of files">
+
+      <ion-card>
+
+        <img [src]="file.url" />
+
+        <ion-card-header>
+          <ion-card-subtitle>{{file.created | date:'dd/MM h:mm a'}}</ion-card-subtitle>
+          <ion-card-title>{{file.email}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <section>
+            <ion-chip slot="start" [class]="file.tipo=='linda' ? 'success' : 'danger'">
+              <ion-label>
+                <ion-icon [name]="file.tipo=='linda' ? 'checkmark' : 'close'"></ion-icon>
+              </ion-label>
+            </ion-chip>
+            <ion-badge [class]="file.tipo=='linda' ? 'success' : 'danger'">{{file.votos.length}}</ion-badge>
+            <ion-button class="button-thumb" (click)="votar(file.id)">
+              <ion-icon *ngIf="!file.votado" slot="icon-only" name="thumbs-up"></ion-icon>
+              <ion-icon *ngIf="file.votado" slot="icon-only" name="thumbs-down"></ion-icon>
+            </ion-button>
+          </section>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+
+  </ion-slides>
+
+  <!-- <ion-card *ngFor="let file of files">
+    <img [src]="file.url" />
+    <ion-card-header>
+      <ion-card-subtitle>{{file.created | date:'dd/MM h:mm a'}}</ion-card-subtitle>
+      <ion-card-title>{{file.email}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <section>
+        <ion-chip slot="start" [class]="file.tipo=='linda' ? 'success' : 'danger'">
+          <ion-label>
+            <ion-icon [name]="file.tipo=='linda' ? 'checkmark' : 'close'"></ion-icon>
+          </ion-label>
+        </ion-chip>
+        <ion-badge [class]="file.tipo=='linda' ? 'success' : 'danger'">{{file.votos.length}}</ion-badge>
+        <ion-button class="button-thumb" (click)="votar(file.id)">
+          <ion-icon *ngIf="!file.votado" slot="icon-only" name="thumbs-up"></ion-icon>
+          <ion-icon *ngIf="file.votado" slot="icon-only" name="thumbs-down"></ion-icon>
+        </ion-button>
+      </section>
+    </ion-card-content>
+  </ion-card> -->
+</ion-content>

@@ -1,0 +1,30 @@
+ion-card, ion-card-subtitle{
+    background-color:rgb(206, 159, 220);
+    color: #fff;
+}
+
+ion-card-title{
+    font-weight: bold;
+}
+
+ion-badge{
+    position: relative;
+    top: 7px;
+    left: 6px;
+}
+
+.button-thumb {
+    float: right;
+}
+
+.success{
+    background-color: #28a745;
+}
+
+.danger{
+    background-color: #dc3545;
+}
+
+.button-ver{
+    display: inline;
+}

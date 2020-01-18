@@ -1,0 +1,132 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-segment [(ngModel)]="galleryType" (ionChange)="ionChangeSegment()">
+    <ion-segment-button value="todas">
+      <ion-label>Todas</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="mias">
+      <ion-label>Mis fotos</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="estadisticas">
+      <ion-label>Gráficos</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="galleryType">
+    <ion-grid *ngSwitchCase="'todas'" fixed>
+      <ion-row>
+        <ion-col size="6" size-md="4" size-lg="3" *ngFor="let image of allPhotos">
+          <div class="image-container">
+            <img [src]="image.url" />
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid *ngSwitchCase="'mias'" fixed>
+      <ion-row>
+        <ion-col size="6" size-md="4" size-lg="3" *ngFor="let image of myPhotos">
+          <div class="image-container">
+            <img [src]="image.url" />
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid *ngSwitchCase="'estadisticas'" fixed>
+      <div *ngIf="tipo == 'fea'">
+        <ion-row>
+          <ion-col size="12">
+            <div class="ion-padding">
+              <ion-card>
+                <ion-card-header>
+                  Gráfico de barras
+                </ion-card-header>
+                <ion-card-content>
+                  <canvas id="barCanvas"></canvas>
+                </ion-card-content>
+              </ion-card>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <div *ngIf="tipo == 'linda'">
+        <ion-row>
+          <ion-col size="12">
+            <div class="ion-padding">
+              <ion-card>
+                <ion-card-header>
+                  Gráfico de torta
+                </ion-card-header>
+                <ion-card-content>
+                  <canvas id="doughnutCanvas"></canvas>
+                </ion-card-content>
+              </ion-card>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <div *ngIf="imgSelected">
+        <ion-row>
+          <ion-col size="12">
+            <div class="ion-padding">
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-subtitle>{{imgSelected.fecha}}</ion-card-subtitle>
+                  <ion-card-title>{{imgSelected.email}}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <img [src]="imgSelected.url" />
+                </ion-card-content>
+              </ion-card>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-grid>
+  </div>
+
+  <ion-grid *ngIf="urlsFoto.length>0&&galleryType!='estadisticas'" fixed>
+    <ion-row style="color: white;font-weight: bold;">
+      Fotos a subir:
+    </ion-row>
+    <ion-row>
+      <ion-col size="3" size-md="3" size-lg="3" *ngFor="let image of urlsFoto">
+        <div class="image-container">
+          <img class="img-a-subir" [src]="image.url" />
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="subirFotos()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<ion-fab horizontal="start" vertical="bottom" slot="fixed">
+  <ion-fab-button color="dark">
+    <ion-icon name="arrow-dropup"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list side="top">
+    <ion-fab-button (click)="elegirFoto(tipo)">
+      <ion-icon name="images"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button (click)="tomarFoto(tipo)">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-list>
+</ion-fab>

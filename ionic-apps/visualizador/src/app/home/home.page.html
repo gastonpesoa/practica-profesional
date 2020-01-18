@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-button slot="end" fill="clear" (click)="presentActionSheet()">
+      <ion-icon style="color: aliceblue" name="menu"></ion-icon>
+    </ion-button>
+    <ion-title>
+      Relevamiento Visual 2019
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <ion-label>
+      <h2><b>Cosas Lindas</b></h2>
+    </ion-label>
+    <ion-button class="marks-buttons" color="tertiary" expand="block" routerLink="/list/cosasLindas">
+      <img src="../../assets/lindas.jpg" alt="">
+    </ion-button>
+    <ion-label>
+      <h2><b>Cosas Feas</b></h2>
+    </ion-label>
+    <ion-button class="marks-buttons" color="tertiary" expand="block" routerLink="/list/cosasFeas">
+      <img src="../../assets/feas.jpg" alt="">
+    </ion-button>
+  </div>
+  <img *ngIf='imagen' [src]="imagen" alt="">
+</ion-content>
