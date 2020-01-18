@@ -1,0 +1,36 @@
+#borde-abajo{
+    border: 8px solid black;
+    position: relative;
+    top: -46px;
+    z-index: 9999;
+}
+
+#map{
+    border: 7px solid black;
+}
+
+.alarma-activada{
+    --background: #f04141;
+}
+
+.gps-status{
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+    background-color: #6c0000;
+    position: absolute;
+    top: 367px;
+    z-index: 99999;
+    right: 25px;
+}
+
+.gps-status-activo{
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+    background-color: #ff0000;
+    position: absolute;
+    top: 367px;
+    z-index: 99999;
+    right: 25px;
+}

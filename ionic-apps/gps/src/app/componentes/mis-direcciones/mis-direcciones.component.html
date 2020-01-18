@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-button slot="start" fill="clear" (click)="closeModal()">
+      <ion-icon style="color: aliceblue; font-size: 25px;" name="arrow-round-back"></ion-icon>
+    </ion-button>
+    <ion-title>Mis Direcciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+
+  <div *ngIf="alarmas.length<1">
+    No tenés alarmas registradas
+  </div>
+
+  <ion-list *ngIf="alarmas.length>0">
+    <ion-list-header>
+      Listado de direcciones y distancias
+    </ion-list-header>
+
+    <ion-item *ngFor="let item of alarmas" (click)="seleccionar(item)">
+      <ion-label>
+        <h3>Dirección de destino:</h3>
+        <p class="ion-text-wrap">{{item.domicilio.display_name}}</p>
+        <h3>Distancia al destino de activación de alarma : </h3>
+        <p class="ion-text-wrap">{{item.distancia}} km</p>
+        <h3>Fecha de creación: </h3>
+        <p class="ion-text-wrap">{{item.fecha}}</p>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>
