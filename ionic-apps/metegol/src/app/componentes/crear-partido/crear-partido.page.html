@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button slot="end" fill="clear" (click)="presentActionSheet()">
+      <ion-icon style="color: black" name="menu"></ion-icon>
+    </ion-button>
+    <ion-title>
+      Crear Partido de Metegol
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Ingresá los datos para crear un nuevo partido</ion-card-subtitle>
+      <ion-card-title>Registro de nuevo partido de metegol</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Nombre del primer competidor:</ion-label>
+        <ion-input type="text" [(ngModel)]="primerCompetidor"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Nombre del segundo competidor:</ion-label>
+        <ion-input type="text" [(ngModel)]="segundoCompetidor"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Fecha del encuentro:</ion-label>
+        <ion-input type="date" [(ngModel)]="fecha"></ion-input>
+      </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+
+  <div class="detalle">
+
+    <div class="ion-text-center competidor" *ngIf="primerCompetidor">
+      <b>Jugador 1:</b> {{primerCompetidor | titlecase}}
+    </div>
+    <div class="ion-text-center" *ngIf="primerCompetidor&&segundoCompetidor">Versus</div>
+    <div class="ion-text-center competidor" *ngIf="segundoCompetidor">
+      <b>Jugador 2:</b> {{segundoCompetidor | titlecase}}
+    </div>
+
+    <div *ngIf="fecha" class="ion-text-center fecha">
+      <h5>Fecha del encuentro:</h5>
+      <p>{{fecha}}</p>
+    </div>
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>
+      <ion-button id="inicio-btn" class="ion-text-center" color="success" expand="full" size='large'
+        (click)="crearPartido()">
+        Crear Partido
+      </ion-button>
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

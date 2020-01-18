@@ -1,14 +1,75 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-button slot="end" fill="clear" (click)="presentActionSheet()">
+      <ion-icon style="color: black" name="menu"></ion-icon>
+    </ion-button>
     <ion-title>
-      Ionic Blank
+      Partidos de metegol
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+<ion-content class="ion-padding">
+
+  <ion-segment [(ngModel)]="partidosType">
+    <ion-segment-button value="terminados">
+      <ion-label>Terminados</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="pendientes">
+      <ion-label>Pendientes</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="partidosType">
+
+    <ion-list *ngSwitchCase="'terminados'">
+      <ion-list-header>
+        Listado de partidos terminados:
+      </ion-list-header>
+
+      <ion-item *ngFor="let item of partidosTerminados; index as i">
+        <ion-avatar slot="start">
+          <img [src]="item.urlFoto ? item.urlFoto : '../../assets/icon/iconTrans.png'">
+        </ion-avatar>
+        <ion-label>
+          <h2><b>Ganador: {{item.ganador | titlecase}}</b></h2>
+          <h1><b>{{item.jugadorUno | titlecase}}: {{item.jugadorUnoResultado}}</b>  - <b>{{item.jugadorDos | titlecase}}: {{item.jugadorDosResultado}}</b> </h1>
+          <p><b>Fecha:</b> {{item.fecha}}</p>
+        </ion-label>
+      </ion-item>
+
+    </ion-list>
+    <ion-list *ngSwitchCase="'pendientes'">
+      <ion-list-header>
+        Listado de partidos pendientes:
+      </ion-list-header>
+
+      <ion-item *ngFor="let item of partidosPendientes; index as i">
+        <ion-label>
+          <h1><b>{{item.jugadorUno | titlecase}} contra {{item.jugadorDos | titlecase}}</b> </h1>
+          <p><b>Fecha:</b> {{item.fecha}}</p>
+        </ion-label>
+      </ion-item>
+
+    </ion-list>
+
   </div>
+
 </ion-content>
+
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>
+      <ion-button *ngIf="usuarioUid=='R4AekbHsy6YldEt23w4tpQsiJFp2'" id="inicio-btn" class="ion-text-center"
+        color="success" expand="full" size='large' routerLink="/crear-partido">
+        Nuevo Partido
+      </ion-button>
+      <ion-button *ngIf="usuarioUid=='R4AekbHsy6YldEt23w4tpQsiJFp2'" id="inicio-btn" class="ion-text-center"
+        color="success" expand="full" size='large' routerLink="/cargar-resultados">
+        Cargar resultados
+      </ion-button>
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>
