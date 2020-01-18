@@ -1,15 +1,28 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="tertiary">
+    <ion-button slot="end" fill="clear" (click)="presentActionSheet()">
+      <ion-icon style="color: aliceblue" name="menu"></ion-icon>
+    </ion-button>
     <ion-title>
-      Ionic Blank
+      Relevamiento Visual 2019
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+    <ion-label>
+      <h2><b>Cosas Lindas</b></h2>
+    </ion-label>
+    <ion-button class="marks-buttons" color="tertiary" expand="block" (click)="tomarFoto(0)">
+      <img src="../../assets/check.png" alt="">
+    </ion-button>
+    <ion-label>
+      <h2><b>Cosas Feas</b></h2>
+    </ion-label>
+    <ion-button class="marks-buttons" color="tertiary" expand="block" (click)="tomarFoto(1)">
+      <img src="../../assets/cross.png" alt="">
+    </ion-button>
   </div>
-  <ion-button (click)="OnLogOut()">Desconectarse</ion-button>
+  <img *ngIf='imagen' [src]="imagen" alt="">
 </ion-content>
