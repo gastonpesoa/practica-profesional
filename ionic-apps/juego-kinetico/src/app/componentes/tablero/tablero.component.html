@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar [class]="heroe.color">
+    <ion-button slot="start" fill="clear" (click)="closeModal()">
+      <ion-icon style="color: aliceblue; font-size: 25px;" name="arrow-round-back"></ion-icon>
+    </ion-button>
+    <ion-title>{{heroe.nombre}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [class]="heroe.color" padding>
+
+  <div id="container">
+    <img id="heroe" [src]="heroe.imagen" [class]="heroe.nombre" />
+  </div>
+
+</ion-content>
+
+<ion-footer class="ion-padding" style="background-color: black;">
+  <ion-item class="black">
+    <countup-timer [countUpTimerConfig]="testConfig"></countup-timer>
+  </ion-item>
+</ion-footer>

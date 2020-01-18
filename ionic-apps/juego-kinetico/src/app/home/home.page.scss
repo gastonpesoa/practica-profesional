@@ -1,0 +1,25 @@
+
+.marks-buttons{
+    height: 230px;
+    margin: 20px 10px;
+}
+
+img{
+    width: 100%;
+    border-radius: 10%;
+}
+
+ion-content{
+    --background: rgb(0, 0, 0);
+}
+
+.gold{
+    --background: gold;
+}
+
+#inicio-btn{
+    height: 100px;
+    width: 83%;
+    position: absolute;
+    bottom: 30px;
+}

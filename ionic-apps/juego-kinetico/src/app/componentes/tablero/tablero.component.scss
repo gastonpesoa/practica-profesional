@@ -1,0 +1,45 @@
+ion-toolbar{
+    color: white;
+}
+
+.red{
+    --ion-background-color:red;
+}
+
+.black{
+    --ion-background-color:black;
+}
+
+#container{
+    margin: auto;
+    height: 650px;
+    width: 90%;
+    outline: 4px solid yellow;
+    position: relative;
+    background-color: #ccc;
+}
+
+#heroe{
+    width: 30%;
+    position: absolute;
+    top:200px;
+    left: 125px;
+}
+
+countup-timer {
+    color: red;
+    font-weight: bold;
+    font-size: 45px;
+    background-color: black;
+    font-family: monospace;
+}
+
+ion-item{
+    --ion-background-color:black;
+}
+
+.Batman{
+    width: 35% !important;
+}
+
+
